@@ -1,12 +1,13 @@
 #include<stdio.h>
-int insert(int z[],int n)
+int m;
+int insert(int z[],int m)
 {	int in,j,pos,i;
 		printf("\nEnter the number to insert :");
 		scanf("%d",&in);
 		printf("\nEnter the position :");
 		scanf("%d",&j);
 		pos=j-1;
-	for(i=n+1;i>=pos;i--)
+	for(i=m;i>=pos;i--)
 	{	
 		if(i==pos)
 		{
@@ -16,25 +17,28 @@ int insert(int z[],int n)
 		{
 			z[i]=z[i-1];
 		}
+			
 	}
 	printf("\nThe Array after modification :");
-			for(i=0;i<n+1;i++)
+			for(i=0;i<m;i++)
 			{
 				printf("\t%d",z[i]);
 			}
+		
+		
 }
-void remove(int z[],int n)
+void remove(int z[],int m)
 {	int j,pos,i;	
 	printf("\nEnter the position to delete:");
 			scanf("%d",&j);
 			pos=j-1;
-	for(i=0;i<n;i++)
+	for(i=0;i<m;i++)
 	{
 		if(i>=pos)
 		z[i]=z[i+1];
 	}
 	printf("\nThe Array after modification :");
-			for(i=0;i<n-1;i++)
+			for(i=0;i<m;i++)
 			{
 				printf("\t%d",z[i]);
 			}
@@ -44,11 +48,11 @@ void search(int a[],int n)
 	int i,found=0,in;
 	printf("\nEnter Element to search");
 	scanf("%d",&in);
-	for(i=0;i<n;i++)
+	for(i=0;i<m;i++)
 	{
 		if(a[i]==in)
 		{
-			printf("the index of element is %d",i);
+			printf("the index of element is %d\n",i);
 			found=1;			
 		}
 	}
@@ -61,33 +65,43 @@ void search(int a[],int n)
 int main()
 {
 	int i,j,n,pos,in,choice;
+	
+	int count=0;
 	printf("enter size of array :");
 	scanf("%d",&n);
+	m=n;
 	printf("enter elements in array :");
 	int a[n];
 	for(i=0;i<n;i++)
 	{
 		scanf("%d",&a[i]);
 	}
-	printf("Choose Action (1-4) :\n\t1.insert element\n\t2.delete element\n\t3.search element\n\t4.print array");
+	while(count==0)
+	{
+	printf("\nChoose Action (1-4) :\n\t1.insert element\n\t2.delete element\n\t3.search element\n\t4.print array\n\t5.EXIT");
 	scanf("%d",&choice);
 	switch(choice)
 	{
-	case 1: insert(a,n);
+	case 1: m++;
+			insert(a,m);
 			break;
 			
-	case 2: remove(a,n);
+	case 2: m--;
+			remove(a,m);
 			break;
 			
-	case 3: search(a,n);
+	case 3: search(a,m);
 			break;
 			
-	case 4: for(i=0;i<n;i++)
+	case 4: for(i=0;i<m;i++)
 			{
 				printf("\t%d",a[i]);
 			}
 			break;
+	case 5: count=1;
+			break;
 			
 	default: printf("Invalid Option!,Choose correct Option");
 	}
+}
 }
