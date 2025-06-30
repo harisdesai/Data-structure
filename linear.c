@@ -11,7 +11,7 @@ void search(int a[],int tar,int n)
   }
 	if(found==0)
   	{
-  		printf("Element Not Found\n");
+  		printf("Elements Not Found\n");
   	}
 }
 int main()
